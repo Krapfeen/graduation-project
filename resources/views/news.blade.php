@@ -31,7 +31,15 @@
                     <div class="payment-basket__status__basket"><span class="payment-basket__status__basket-value">0</span><span class="payment-basket__status__basket-value-descr">товаров</span></div>
                 </div>
             </div>
-            <div class="authorization-block"><a href="#" class="authorization-block__link">Регистрация</a><a href="#" class="authorization-block__link">Войти</a></div>
+            <div class="authorization-block">
+                <? if (!\Illuminate\Support\Facades\Auth::user()): ?>
+                <a href="{{ route('register') }}" class="authorization-block__link">Регистрация</a>
+                <a href="{{ route('login') }}" class="authorization-block__link">Войти</a>
+                <? else: ?>
+                <? echo 'Вы вошли как ' . \Illuminate\Support\Facades\Auth::user()->name; ?>
+                <a href="<?= \Illuminate\Support\Facades\Auth::guard()->logout() ?>" class="authorization-block__link">Выйти</a>
+                <? endif; ?>
+            </div>
         </div>
     </header>
     <div class="middle">
