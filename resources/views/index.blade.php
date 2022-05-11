@@ -16,7 +16,7 @@
         <nav class="main-navigation">
             <ul class="nav-list">
                 <li class="nav-list__item"><a href="/" class="nav-list__item__link">Главная</a></li>
-                <li class="nav-list__item"><a href="/cart1" class="nav-list__item__link">Мои заказы</a></li>
+                <li class="nav-list__item"><a href="/orders" class="nav-list__item__link">Мои заказы</a></li>
                 <li class="nav-list__item"><a href="/news" class="nav-list__item__link">Новости</a></li>
                 <li class="nav-list__item"><a href="/about" class="nav-list__item__link">О компании</a></li>
             </ul>
@@ -28,7 +28,7 @@
             <div class="payment-container">
                 <div class="payment-basket__status">
                     <div class="payment-basket__status__icon-block">
-                        <a class="payment-basket__status__icon-block__link">
+                        <a class="payment-basket__status__icon-block__link" href="/cart">
                             <i class="fa fa-shopping-basket"></i>
                         </a>
                     </div>

@@ -29,12 +29,12 @@ Route::get('/category', function () {
     return view('category');
 });
 
-Route::get('/cart1', function () {
-    return view('cart1');
+Route::get('/orders', function () {
+    return view('orders');
 });
 
-Route::get('/cart2', function () {
-    return view('cart2');
+Route::get('/cart', function () {
+    return view('cart');
 });
 
 Route::get('/product', function () {
