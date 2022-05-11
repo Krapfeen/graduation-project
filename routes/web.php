@@ -37,9 +37,24 @@ Route::get('/cart', function () {
     return view('cart');
 });
 
-Route::get('/product', function () {
-    return view('product');
+Route::group(['prefix' => 'product', 'middleware' => 'auth'], function () {
+    Route::get('/', function () {
+        return view('product.product');
+    })->name('product');
+
+    Route::get('/create', function () {
+        return view('product.create');
+    })->name('product.create');
+    Route::get('/{id?}/edit', [\App\Http\Controllers\ProductController::class, 'index'])->name('product.edit');
+    Route::get('/{id?}/edit/save', [\App\Http\Controllers\ProductController::class, 'edit'])->name('product.save');
+    Route::get('/{id?}/delete', [\App\Http\Controllers\ProductController::class, 'destroy'])->name('product.delete');
+
+    Route::get('/list', [\App\Http\Controllers\ProductController::class, 'show'])->name('product.list');
+
+    Route::get('/add', [\App\Http\Controllers\ProductController::class, 'add'])->name('product.add');
 });
+
+
 
 Route::get('/about', function () {
     return view('about');
