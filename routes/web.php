@@ -37,11 +37,8 @@ Route::get('/cart', function () {
     return view('cart');
 });
 
-Route::group(['prefix' => 'product', 'middleware' => 'auth'], function () {
-    Route::get('/', function () {
-        return view('product.product');
-    })->name('product');
-
+Route::group(['prefix' => 'product'], function () {
+    Route::get('/{id}', [\App\Http\Controllers\ProductController::class, 'store'])->name('product');
     Route::get('/create', function () {
         return view('product.create');
     })->name('product.create');

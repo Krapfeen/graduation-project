@@ -48,9 +48,11 @@ class ProductController extends Controller
      * @param  \App\Http\Requests\StoreProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProductRequest $request)
+    public function store($id)
     {
-        //
+        $product = Product::query()->find($id);
+        $lastGames = Product::query()->limit(3)->orderBy('updated_at', 'DESC')->get();
+        return view('product.product', ['product' => $product, 'lastGames' => $lastGames]);
     }
 
     /**
