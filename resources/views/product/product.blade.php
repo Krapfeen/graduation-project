@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>1product - ГеймсМаркет</title>
+    <title>{{ $product->name }} - ГеймсМаркет</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -111,7 +111,7 @@
                                 <div class="product-container__content-text__price__value">
                                     Цена: <b>{{ $product->price }}</b>
                                     руб
-                                </div><a href="#" class="btn btn-blue">Купить</a>
+                                </div><a href="{{ route('product.order', ['id' => $product->id]) }}" class="btn btn-blue">Купить</a>
                             </div>
                             <div class="product-container__content-text__description">
                                 <p>{{ $product->description }}</p>
@@ -141,7 +141,7 @@
                                 </div>
                                 <div class="products-columns__item__description">
                                     <span class="products-price">{{ $game->price }} руб</span>
-                                    <a href="#" class="btn btn-blue">Купить</a>
+                                    <a href="{{ route('product.order', ['id' => $game->id]) }}" class="btn btn-blue">Купить</a>
                                 </div>
                             </div>
                         @endforeach

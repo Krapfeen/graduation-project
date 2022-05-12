@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 Route::get('/news', function () {
     return view('news');
@@ -37,8 +37,10 @@ Route::get('/cart', function () {
     return view('cart');
 });
 
-Route::group(['prefix' => 'product'], function () {
+Route::group(['prefix' => 'product', 'middleware' => 'auth'], function () {
     Route::get('/{id}', [\App\Http\Controllers\ProductController::class, 'store'])->name('product');
+    Route::get('/{id}/order', [\App\Http\Controllers\OrderController::class, 'index'])->name('product.order');
+    Route::get('/order/add', [\App\Http\Controllers\OrderController::class, 'add'])->name('order.add');
     Route::get('/create', function () {
         return view('product.create');
     })->name('product.create');
