@@ -41,6 +41,8 @@ Route::group(['prefix' => 'product', 'middleware' => 'auth'], function () {
     Route::get('/{id}', [\App\Http\Controllers\ProductController::class, 'store'])->name('product');
     Route::get('/{id}/order', [\App\Http\Controllers\OrderController::class, 'index'])->name('product.order');
     Route::get('/order/add', [\App\Http\Controllers\OrderController::class, 'add'])->name('order.add');
+    Route::get('/order/list', [\App\Http\Controllers\OrderController::class, 'show'])->name('order.list');
+    Route::get('/order/{id?}/delete', [\App\Http\Controllers\OrderController::class, 'destroy'])->name('order.delete');
     Route::get('/create', function () {
         return view('product.create');
     })->name('product.create');

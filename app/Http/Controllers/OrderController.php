@@ -35,4 +35,16 @@ class OrderController extends Controller
         $order->save();
         return view('index');
     }
+
+    public function show(Product $product)
+    {
+        $orders = Order::query()->get();
+        return view('order.list', ['orders' => $orders]);
+    }
+
+    public function destroy($id)
+    {
+        Order::query()->find($id)->delete();
+        return redirect()->route('order.list');
+    }
 }
